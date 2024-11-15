@@ -9,6 +9,8 @@ app.get('/', (req, res) => {
     res.send("hello world")
 })
 
+// this is for creation in database
+
 app.get('/create', async (req, res) => {
     const userCreate = await usermodel.create({
         name : 'Sohail Dad',
@@ -19,10 +21,20 @@ app.get('/create', async (req, res) => {
     res.send(userCreate)
 })
 
+// this is for read all from database
+
 app.get('/read', async (req, res) => {
     const userRead = await usermodel.find();
 
     res.send(userRead);
+})
+
+// this is for updation in database
+
+app.get('/update',async (req, res) =>{
+    const userUpdate = await usermodel.findOneAndUpdate({email:'example@gmail.com'},{email:'Example@gmail.com'},{new:true});
+
+    res.send(userUpdate);
 })
 
 
