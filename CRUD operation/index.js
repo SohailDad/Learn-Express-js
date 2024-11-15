@@ -37,7 +37,13 @@ app.get('/update',async (req, res) =>{
     res.send(userUpdate);
 })
 
+// this is for deletion in database
 
+app.get('/delete',async (req, res) =>{
+    const userDelete = await usermodel.findOneAndDelete({email:'example@gmail.com'});
+
+    res.send(userDelete);
+})
 
 app.listen(Port, (req, res) => {
     console.log(`Server Running on port ${Port}.....`)
